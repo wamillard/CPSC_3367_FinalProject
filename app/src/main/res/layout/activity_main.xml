@@ -15,19 +15,33 @@
             android:id="@+id/imgV_pantry"
             android:layout_width="match_parent"
             android:layout_height="151dp"
-            app:srcCompat="@mipmap/ic_pantry_round" />
+            app:srcCompat="@mipmap/ic_pantry2_foreground" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtV_Pantrytitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Pantry" />
+            android:padding="5dp"
+            android:text="@string/Pantry"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtVPantrydesctitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pantrytext" />
+            android:text="@string/pantrytext"
+            android:padding="5dp"
+            android:textStyle="normal"
+            android:textSize="20dp"
+            android:textColor="@color/gray"
+
+
+
+
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

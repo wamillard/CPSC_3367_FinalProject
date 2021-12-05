@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgV_pantryicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/sym_def_app_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+      />
+
+    <TextView
+        android:id="@+id/txtV_pantryname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PantryName"
+        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txtV_pantrydescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PantryDescriptions"
+        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
+        app:layout_constraintTop_toBottomOf="@+id/txtV_pantryname"
+        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
+        android:paddingLeft="10dp"
+        />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
