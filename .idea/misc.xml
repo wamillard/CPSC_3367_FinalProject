@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/SANDR/StudioProjects/CPSC_3367_FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2911458333333333" />
-        <entry key="..\:/Users/SANDR/StudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/activity_main.xml" value="0.275" />
-        <entry key="..\:/Users/SANDR/StudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/pantrylist_layout.xml" value="0.275" />
+        <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/pantrylist_layout.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/xml/datasource.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>
