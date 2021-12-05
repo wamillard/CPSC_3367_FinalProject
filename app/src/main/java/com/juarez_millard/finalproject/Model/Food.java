@@ -6,20 +6,20 @@ import java.util.List;
 
 public class Food
 {
-	public Integer fID;
+	public String fID;
 	public String fName;
 	public String UoM;
-	public List<Integer> fCategories;
+	public List<String> fCategories;
 
 	public Food()
 	{
-		this.fID=0;
+		this.fID="";
 		this.fName="";
 		this.UoM="";
-		this.fCategories=new ArrayList<Integer>();
+		this.fCategories=new ArrayList<String>();
 	}
 
-	public Food(Integer newfID, String newfName, String newUoM,List newfCategories)
+	public Food(String newfID, String newfName, String newUoM,List newfCategories)
 	{
 		this.fID=newfID;
 		this.fName=newfName;
@@ -27,7 +27,7 @@ public class Food
 		this.fCategories=newfCategories;
 	}
 
-	public Integer getfID()
+	public String getfID()
 	{
 		return this.fID;
 	}
@@ -47,7 +47,7 @@ public class Food
 		return this.fCategories;
 	}
 
-	public void setfID(Integer newfID)
+	public void setfID(String newfID)
 	{
 		this.fID=newfID;
 	}

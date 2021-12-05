@@ -2,20 +2,20 @@ package com.juarez_millard.finalproject.Model;
 
 public class Pantry
 {
-	public Integer pID;
+	public String pID;
 	public String pName;
 	public String pLocation;
-	public Integer pCount;
+	public String pCount;
 
 	public Pantry()
 	{
-		this.pID=0;
+		this.pID="";
 		this.pName="";
 		this.pLocation="";
-		this.pCount=0;
+		this.pCount="0";
 	}
 
-	public Pantry(Integer newpID, String newpName, String newpLocation, Integer newpCount)
+	public Pantry(String newpID, String newpName, String newpLocation, String newpCount)
 	{
 		this.pID=newpID;
 		this.pName=newpName;
@@ -23,7 +23,7 @@ public class Pantry
 		this.pCount=newpCount;
 	}
 
-	public Integer getpID()
+	public String getpID()
 	{
 		return this.pID;
 	}
@@ -38,12 +38,12 @@ public class Pantry
 		return this.pLocation;
 	}
 
-	public Integer getpCount()
+	public String getpCount()
 	{
 		return this.pCount;
 	}
 
-	public void setpID(Integer newpID)
+	public void setpID(String newpID)
 	{
 		this.pID=newpID;
 	}
@@ -58,7 +58,7 @@ public class Pantry
 		this.pLocation=newpLocation;
 	}
 
-	public void setpCount(Integer newpCount)
+	public void setpCount(String newpCount)
 	{
 		this.pCount=newpCount;
 	}

@@ -2,21 +2,22 @@ package com.juarez_millard.finalproject.Model;
 
 public class FoodEntry
 {
-	public Integer fID;
-	public Integer pID;
-	public Integer QTYstocked;
-	public Integer QTYpar;
+	public String fID;
+	public String pID;
+	public String QTYstocked;
+	public String QTYpar;
+
 
 
 	public FoodEntry()
 	{
-		this.fID=0;
-		this.pID=0;
-		this.QTYstocked=0;
-		this.QTYpar=0;
+		this.fID="";
+		this.pID="";
+		this.QTYstocked="";
+		this.QTYpar="";
 	}
 
-	public FoodEntry(Integer newfID, Integer newpID, Integer newQTYStocked, Integer newQTYpar)
+	public FoodEntry(String newfID, String newpID, String newQTYStocked, String newQTYpar)
 	{
 		this.fID=newfID;
 		this.pID=newpID;
@@ -24,42 +25,42 @@ public class FoodEntry
 		this.QTYpar=newQTYpar;
 	}
 
-	public Integer getfID()
+	public String getfID()
 	{
 		return this.fID;
 	}
 
-	public Integer getpID()
+	public String getpID()
 	{
 		return this.pID;
 	}
 
-	public Integer getQTYstocked()
+	public String getQTYstocked()
 	{
 		return this.QTYstocked;
 	}
 
-	public Integer getQTYpar()
+	public String getQTYpar()
 	{
 		return this.QTYpar;
 	}
 
-	public void setfID(Integer newfID)
+	public void setfID(String newfID)
 	{
 		this.fID=newfID;
 	}
 
-	public void setpID(Integer newpID)
+	public void setpID(String newpID)
 	{
 		this.pID=newpID;
 	}
 
-	public void setQTYstocked(Integer newQTYstocked)
+	public void setQTYstocked(String newQTYstocked)
 	{
 		this.QTYstocked=newQTYstocked;
 	}
 
-	public void setQTYpar(Integer newQTYpar)
+	public void setQTYpar(String newQTYpar)
 	{
 		this.QTYpar=newQTYpar;
 	}
