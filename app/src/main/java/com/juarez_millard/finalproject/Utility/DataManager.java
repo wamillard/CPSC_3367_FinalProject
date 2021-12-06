@@ -37,14 +37,14 @@ public class DataManager
 	{
 		ctx.deleteFile("pantry");
 
-		StringBuilder pantry=new StringBuilder();
+		StringBuilder newPantry=new StringBuilder();
 
-		pantry.append("0\n").append("Cabinet\n").append("Kitchen\n").append("1\n");
-		pantry.append("1\n").append("Fridge\n").append("Kitchen\n").append("1\n");
+		newPantry.append("0\n").append("Cabinet\n").append("Kitchen\n").append("1\n");
+		newPantry.append("1\n").append("Fridge\n").append("Kitchen\n").append("0\n");
 
 		try (FileOutputStream fos = ctx.openFileOutput("pantry", Context.MODE_APPEND))
 		{
-			fos.write(pantry.toString().getBytes(StandardCharsets.UTF_8));
+			fos.write(newPantry.toString().getBytes(StandardCharsets.UTF_8));
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
@@ -58,20 +58,11 @@ public class DataManager
 
 	private BufferedReader getFile(Context ctx,String fileName)
 	{
-		StringBuilder readFile=new StringBuilder();
 		try
 		{
 			InputStreamReader isr=new InputStreamReader(ctx.openFileInput(fileName), StandardCharsets.UTF_8);
 			return new BufferedReader(isr);
-/*			BufferedReader br=new BufferedReader(isr);
 
-			String nextLine=br.readLine();
-			while (nextLine!=null)
-			{
-				readFile.append(nextLine).append('\n');
-				nextLine = br.readLine();
-			}
-*/
 		}
 		catch (FileNotFoundException e )
 		{
@@ -143,13 +134,14 @@ public class DataManager
 				nextLine= foodReader.readLine();
 				Uom=nextLine;
 				nextLine= foodReader.readLine();
-				while(nextLine!="/Cat")
+				while(!nextLine.equals(new String("/Cat")))
 				{
 					fCategory.add(nextLine);
 					nextLine= foodReader.readLine();
 				}
 
 				newFood.put(fID,new Food(fID,fName,Uom,fCategory));
+				nextLine= foodReader.readLine();
 			}
 			foodReader.close();
 		} catch (IOException e)

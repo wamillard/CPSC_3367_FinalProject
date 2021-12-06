@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.juarez_millard.finalproject.Model.Food;
+import com.juarez_millard.finalproject.Model.FoodEntry;
 import com.juarez_millard.finalproject.Utility.DataManager;
 import com.juarez_millard.finalproject.databinding.ActivityMainBinding;
 
@@ -19,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private DataManager dataManager;
 
     public HashMap pantryList;    // (pID, Pantry)
-//    public HashMap<Integer, Food> foodList;       // (fID, Food)
-//    public HashMap<Integer, FoodEntry> inventory; // (fID, FoodEntry)
-//    public HashMap<Integer, String> categoryList;  // (cID, cName)
+    public HashMap foodList;       // (fID, Food)
+    public HashMap inventory; // (fID, FoodEntry)
+    public HashMap categoryList;  // (cID, cName)
 
 
     @Override
@@ -34,21 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-/*        try (FileOutputStream fos = this.openFileOutput(filename, Context.MODE_APPEND))
-        {
-            fos.write(contents1.getBytes(StandardCharsets.UTF_8));
-            fos.write(lineSeperator);
-            fos.write(contents2.getBytes(StandardCharsets.UTF_8));
-            fos.write(lineSeperator);
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }*/
-
-
         DataManager dm=new DataManager();
-        dm.recreateSampleFiles(this);
+//        dm.recreateSampleFiles(this);
         pantryList=dm.readPantry(this);
+        foodList=dm.readFood(this);
+        inventory=dm.readFoodEntry(this);
+        categoryList=dm.readCategories(this);
 
         Integer p=0;
 
