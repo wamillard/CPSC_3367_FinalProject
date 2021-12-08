@@ -53,7 +53,6 @@ public class DataManager
 			e.printStackTrace();
 		}
 
-
 	}
 
 	private BufferedReader getFile(Context ctx,String fileName)
@@ -218,5 +217,26 @@ public class DataManager
 
 		return newCategory;
 	}
+
+	public void storePantry(Context ctx)
+	{
+
+	}
+
+	public void storeFood(Context ctx)
+	{
+
+	}
+
+	public void storeFoodEntries(Context ctx)
+	{
+
+	}
+
+	public void storeCategories(Context ctx)
+	{
+
+	}
+
 
 }
