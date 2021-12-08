@@ -35,15 +35,6 @@
         android:paddingLeft="10dp"
         />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
