@@ -15,14 +15,15 @@
             android:id="@+id/imgV_pantry"
             android:layout_width="match_parent"
             android:layout_height="151dp"
-            app:srcCompat="@mipmap/ic_pantry2_foreground" />
+            android:src="@drawable/ic_pantry_blueorange"
+            />
 
         <TextView
             android:id="@+id/txtV_Pantrytitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:text="@string/Pantry"
+            android:padding="5dp"
             android:textStyle="bold"
             android:textSize="40dp"
             android:textColor="@color/black"

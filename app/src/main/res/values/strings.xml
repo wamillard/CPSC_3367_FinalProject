@@ -4,5 +4,5 @@
     <string name ="pantrytext">Select a pantry to view or edit</string>
     <string name="PantryName">My Pantry Name</string>
     <string name="PantryDescriptions">5 Items </string>
-
+    <string name="AddItemTitle">Add Item </string>
 </resources>
