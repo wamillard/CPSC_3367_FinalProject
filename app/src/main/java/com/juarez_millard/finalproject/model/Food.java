@@ -1,4 +1,4 @@
-package com.juarez_millard.finalproject.Model;
+package com.juarez_millard.finalproject.model;
 
 
 import java.util.ArrayList;
@@ -6,20 +6,20 @@ import java.util.List;
 
 public class Food
 {
-	public String fID;
+	public Integer fID;
 	public String fName;
 	public String UoM;
-	public List<String> fCategories;
+	public List<Integer> fCategories;
 
 	public Food()
 	{
-		this.fID="";
+		this.fID=0;
 		this.fName="";
 		this.UoM="";
-		this.fCategories=new ArrayList<String>();
+		this.fCategories=new ArrayList<Integer>();
 	}
 
-	public Food(String newfID, String newfName, String newUoM,List newfCategories)
+	public Food(Integer newfID, String newfName, String newUoM,List newfCategories)
 	{
 		this.fID=newfID;
 		this.fName=newfName;
@@ -27,7 +27,7 @@ public class Food
 		this.fCategories=newfCategories;
 	}
 
-	public String getfID()
+	public Integer getfID()
 	{
 		return this.fID;
 	}
@@ -47,7 +47,7 @@ public class Food
 		return this.fCategories;
 	}
 
-	public void setfID(String newfID)
+	public void setfID(Integer newfID)
 	{
 		this.fID=newfID;
 	}

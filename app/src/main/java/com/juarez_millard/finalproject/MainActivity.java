@@ -1,18 +1,18 @@
 package com.juarez_millard.finalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.juarez_millard.finalproject.Model.Food;
-import com.juarez_millard.finalproject.Model.FoodEntry;
-import com.juarez_millard.finalproject.Utility.DataManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.juarez_millard.finalproject.adapter.PantryAdapter;
 import com.juarez_millard.finalproject.databinding.ActivityMainBinding;
+import com.juarez_millard.finalproject.model.Pantry;
+import com.juarez_millard.finalproject.utility.DataManager;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,14 +36,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        DataManager dm=new DataManager();
-//        dm.recreateSampleFiles(this);
-        pantryList=dm.readPantry(this);
-        foodList=dm.readFood(this);
-        inventory=dm.readFoodEntry(this);
-        categoryList=dm.readCategories(this);
+        DataManager dataManager=new DataManager();
+//        dataManager.recreateSampleFiles(this);
+        pantryList=dataManager.readPantry(this);
+/*
+        foodList=dataManager.readFood(this);
+        inventory=dataManager.readFoodEntry(this);
+        categoryList=dataManager.readCategories(this);
+*/
 
-        Integer p=0;
+        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
+        PantryAdapter mAdapter=new PantryAdapter(this,pantryList);
+        mAdapter.setOnPantryClickListener(new PantryAdapter.OnPantryClickListener()
+        {
+            @Override
+            public void onPantryClick(View view, Pantry pantry, Integer position)
+            {
+                Intent openPantry=new Intent(MainActivity.this,PantryActivity.class);
+                openPantry.putExtra("Pantry", pantry);
+                startActivity(openPantry);
+            }
+
+        });
+
+        RecyclerView mainRecyclerView= this.mBinding.recyclerView;
+        mainRecyclerView.setLayoutManager(layoutManager);
+        mainRecyclerView.setAdapter(mAdapter);
+
+        Integer x=0;
 
 
 
