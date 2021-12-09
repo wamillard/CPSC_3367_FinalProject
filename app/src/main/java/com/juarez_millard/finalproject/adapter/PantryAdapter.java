@@ -1,9 +1,14 @@
 package com.juarez_millard.finalproject.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.loader.ResourcesLoader;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,6 +63,11 @@ public class PantryAdapter extends RecyclerView.Adapter
 		viewHolder.mPantryCount.setText(p.getpCount().toString());
 		viewHolder.mPantryRoom.setText(p.getpRoom());
 
+		StringBuilder pantry_icon_path= new StringBuilder("@drawable/ic_pantry_").append(p.getpIcon().toString());
+		viewHolder.mpIcon.setImageResource(mContext.getResources().getIdentifier(pantry_icon_path.toString(),"id", mContext.getPackageName()));
+
+
+
 	}
 
 	@Override
@@ -71,6 +81,7 @@ public class PantryAdapter extends RecyclerView.Adapter
 		public TextView mPantryName;
 		public TextView mPantryCount;
 		public TextView mPantryRoom;
+		public ImageView mpIcon;
 		public View lyt_parent;
 
 		public PantryViewHolder(View v)
@@ -79,6 +90,7 @@ public class PantryAdapter extends RecyclerView.Adapter
 			mPantryName=v.findViewById(R.id.txtV_pantryname);
 			mPantryCount=v.findViewById(R.id.txtV_pantrycount);
 			mPantryRoom=v.findViewById(R.id.txtV_pantryRoom);
+			mpIcon=v.findViewById(R.id.imgV_pantryicon);
 			lyt_parent=v.findViewById(R.id.lyt_pantry_parent);
 
 			lyt_parent.setOnClickListener(new View.OnClickListener()

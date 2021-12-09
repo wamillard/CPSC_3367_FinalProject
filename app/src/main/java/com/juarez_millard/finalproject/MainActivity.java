@@ -37,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         DataManager dataManager=new DataManager();
-//        dataManager.recreateSampleFiles(this);
+
+//        dataManager.recreateAllfiles(this);
+
+
         pantryList=dataManager.readPantry(this);
-/*
+
         foodList=dataManager.readFood(this);
-        inventory=dataManager.readFoodEntry(this);
         categoryList=dataManager.readCategories(this);
-*/
+
 
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
         PantryAdapter mAdapter=new PantryAdapter(this,pantryList);
@@ -63,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(layoutManager);
         mainRecyclerView.setAdapter(mAdapter);
 
-        Integer x=0;
 
 
 

@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class DataManager
 {
@@ -25,24 +25,36 @@ public class DataManager
 	}
 
 
-	public void deleteAllfiles(Context ctx)
+	public void recreateAllfiles(Context ctx)
 	{
-		ctx.deleteFile("pantry");
-		ctx.deleteFile("food");
-		ctx.deleteFile("foodEntry");
-		ctx.deleteFile("category");
+		this.editSamplePantry(ctx, true);
+		this.editSampleFood(ctx, true);
+		this.editSampleFoodEntry(ctx, true);
+		this.editSampleCategory(ctx, true);
+		this.editSampleFoodCategory(ctx, true);
 	}
 
-	public void recreateSampleFiles(Context ctx)
+	public void editSamplePantry(Context ctx, Boolean deleteThis)
 	{
-		ctx.deleteFile("pantry");
+		StringBuilder newPantry = new StringBuilder();
+		Integer fileAccess = 0;
 
-		StringBuilder newPantry=new StringBuilder();
+		if (deleteThis)
+		{
+			ctx.deleteFile("pantry");
 
-		newPantry.append("0\n").append("Cabinet\n").append("Kitchen\n").append("1\n").append("0\n");
-		newPantry.append("1\n").append("Fridge\n").append("Kitchen\n").append("0\n").append("0\n");
+			newPantry.append("0\n").append("Cabinet\n").append("Kitchen\n").append("3\n").append("0\n");
+			newPantry.append("1\n").append("Fridge\n").append("Kitchen\n").append("2\n").append("1\n");
+			newPantry.append("2\n").append("Shelf\n").append("Laundry Room\n").append("2\n").append("0\n");
+			newPantry.append("3\n").append("Fridge\n").append("Garage\n").append("2\n").append("1\n");
+			fileAccess = Context.MODE_PRIVATE;
+		} else
+		{
+			newPantry.append("4\n").append("Fridge\n").append("Garage\n").append("0\n").append("1\n");
+			fileAccess = Context.MODE_APPEND;
+		}
 
-		try (FileOutputStream fos = ctx.openFileOutput("pantry", Context.MODE_APPEND))
+		try (FileOutputStream fos = ctx.openFileOutput("pantry", fileAccess))
 		{
 			fos.write(newPantry.toString().getBytes(StandardCharsets.UTF_8));
 		} catch (FileNotFoundException e)
@@ -55,54 +67,206 @@ public class DataManager
 
 	}
 
-	private BufferedReader getFile(Context ctx,String fileName)
+	public void editSampleFood(Context ctx, Boolean deleteThis)
 	{
-		try
-		{
-			InputStreamReader isr=new InputStreamReader(ctx.openFileInput(fileName), StandardCharsets.UTF_8);
-			return new BufferedReader(isr);
+		StringBuilder newFood = new StringBuilder();
+		Integer fileAccess = 0;
 
+		if (deleteThis)
+		{
+			newFood.append("0\n").append("Coke Zero\n").append("ea\n");
+			newFood.append("1\n").append("Bananas\n").append("ea\n");
+			newFood.append("2\n").append("Hugs\n").append("bg\n");
+			newFood.append("3\n").append("Ramen\n").append("pk\n");
+			newFood.append("4\n").append("Milk, Whole\n").append("gal\n");
+
+			fileAccess = Context.MODE_PRIVATE;
+		} else
+		{
+			newFood.append("5\n").append("Milk, 2%\n").append("gal\n");
+
+			fileAccess = Context.MODE_APPEND;
 		}
-		catch (FileNotFoundException e )
+
+		try (FileOutputStream fos = ctx.openFileOutput("food", fileAccess))
+		{
+			fos.write(newFood.toString().getBytes(StandardCharsets.UTF_8));
+		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
-		} ;
+		}
+
+	}
+
+	public void editSampleFoodEntry(Context ctx, Boolean deleteThis)
+	{
+		StringBuilder newFoodEntry = new StringBuilder();
+		Integer fileAccess = 0;
+
+		if (deleteThis)
+		{
+			ctx.deleteFile("foodEntry");
+
+			newFoodEntry.append("0\n").append("1\n").append("3\n").append("12\n");
+			newFoodEntry.append("0\n").append("3\n").append("24\n").append("36\n");
+			newFoodEntry.append("1\n").append("0\n").append("2\n").append("7\n");
+			newFoodEntry.append("2\n").append("0\n").append("1\n").append("6\n");
+			newFoodEntry.append("2\n").append("2\n").append("4\n").append("4\n");
+			newFoodEntry.append("3\n").append("0\n").append("1\n").append("5\n");
+			newFoodEntry.append("3\n").append("2\n").append("8\n").append("12\n");
+			newFoodEntry.append("4\n").append("1\n").append("1\n").append("1\n");
+			newFoodEntry.append("4\n").append("3\n").append("2\n").append("2\n");
+
+			fileAccess = Context.MODE_PRIVATE;
+		} else
+		{
+			newFoodEntry.append("4\n").append("3\n").append("2\n").append("2\n");
+
+			fileAccess = Context.MODE_APPEND;
+		}
+
+		try (FileOutputStream fos = ctx.openFileOutput("foodEntry", fileAccess))
+		{
+			fos.write(newFoodEntry.toString().getBytes(StandardCharsets.UTF_8));
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void editSampleCategory(Context ctx, Boolean deleteThis)
+	{
+		StringBuilder newFoodEntry = new StringBuilder();
+		Integer fileAccess = 0;
+
+		if (deleteThis)
+		{
+			ctx.deleteFile("category");
+
+			newFoodEntry.append("0\n").append("Drink\n");
+			newFoodEntry.append("1\n").append("Sugar-Free\n");
+			newFoodEntry.append("2\n").append("Candy\n");
+			newFoodEntry.append("3\n").append("Pasta\n");
+			newFoodEntry.append("4\n").append("Instant\n");
+			newFoodEntry.append("5\n").append("Fruit\n");
+			newFoodEntry.append("6\n").append("Health\n");
+
+			fileAccess = Context.MODE_PRIVATE;
+		} else
+		{
+			newFoodEntry.append("7\n").append("Snack\n");
+
+			fileAccess = Context.MODE_APPEND;
+		}
+
+		try (FileOutputStream fos = ctx.openFileOutput("category", fileAccess))
+		{
+			fos.write(newFoodEntry.toString().getBytes(StandardCharsets.UTF_8));
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+
+	}
+
+	public void editSampleFoodCategory(Context ctx, Boolean deleteThis)
+	{
+		StringBuilder newFoodEntry = new StringBuilder();
+		Integer fileAccess = 0;
+
+		if (deleteThis)
+		{
+			ctx.deleteFile("categorizedFood");
+
+			newFoodEntry.append("0\n").append("0\n");
+			newFoodEntry.append("4\n").append("0\n");
+			newFoodEntry.append("0\n").append("1\n");
+			newFoodEntry.append("2\n").append("2\n");
+			newFoodEntry.append("3\n").append("3\n");
+			newFoodEntry.append("3\n").append("4\n");
+			newFoodEntry.append("1\n").append("5\n");
+			newFoodEntry.append("1\n").append("6\n");
+			newFoodEntry.append("4\n").append("6\n");
+
+			fileAccess = Context.MODE_PRIVATE;
+		} else
+		{
+			newFoodEntry.append("4\n").append("3\n").append("2\n").append("2\n");
+
+			fileAccess = Context.MODE_APPEND;
+		}
+
+		try (FileOutputStream fos = ctx.openFileOutput("categorizedFood", fileAccess))
+		{
+			fos.write(newFoodEntry.toString().getBytes(StandardCharsets.UTF_8));
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+	private BufferedReader getFile(Context ctx, String fileName)
+	{
+		try
+		{
+			InputStreamReader isr = new InputStreamReader(ctx.openFileInput(fileName), StandardCharsets.UTF_8);
+			return new BufferedReader(isr);
+
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		;
 
 		return null;
 	}
 
 	public HashMap readPantry(Context ctx)
 	{
-		Integer pID=0;
-		String pName="";
-		String pLocation="";
-		Integer pCount=0;
-		Integer pIcon=0;
+		Integer pID = 0;
+		String pName = "";
+		String pLocation = "";
+		Integer pCount = 0;
+		Integer pIcon = 0;
 
-		HashMap<Integer, Pantry> newPantry= new HashMap<>();
+		HashMap<Integer, Pantry> newPantry = new HashMap<>();
 
-		BufferedReader pantryReader=getFile(ctx,"pantry");
+		BufferedReader pantryReader = getFile(ctx, "pantry");
 
 		try
 		{
-			String nextLine= pantryReader.readLine();
-			while (nextLine!=null)
+			String nextLine = pantryReader.readLine();
+			while (nextLine != null)
 			{
-				pID=Integer.parseInt(nextLine);
-				nextLine= pantryReader.readLine();
-				pName=nextLine;
-				nextLine= pantryReader.readLine();
-				pLocation=nextLine;
-				nextLine= pantryReader.readLine();
-				pCount=Integer.parseInt(nextLine);
-				nextLine= pantryReader.readLine();
-				pIcon=Integer.parseInt(nextLine);
-				nextLine=pantryReader.readLine();
+				pID = Integer.parseInt(nextLine);
+				nextLine = pantryReader.readLine();
+				pName = nextLine;
+				nextLine = pantryReader.readLine();
+				pLocation = nextLine;
+				nextLine = pantryReader.readLine();
+				pCount = Integer.parseInt(nextLine);
+				nextLine = pantryReader.readLine();
+				pIcon = Integer.parseInt(nextLine);
+				nextLine = pantryReader.readLine();
 
-				newPantry.put(pID,new Pantry(pID,pName,pLocation,pCount,pIcon));
+				newPantry.put(pID, new Pantry(pID, pName, pLocation, pCount, pIcon));
 			}
 
 			pantryReader.close();
@@ -116,34 +280,34 @@ public class DataManager
 
 	public HashMap readFood(Context ctx)
 	{
-		Integer fID=0;
-		String fName="";
-		String Uom="";
-		ArrayList<Integer> fCategory=new ArrayList<>();
+		Integer fID = 0;
+		String fName = "";
+		String Uom = "";
+		ArrayList<Integer> fCategory = new ArrayList<>();
 
-		HashMap<Integer, Food> newFood= new HashMap<>();
+		HashMap<Integer, Food> newFood = new HashMap<>();
 
-		BufferedReader foodReader=getFile(ctx,"food");
+		BufferedReader foodReader = getFile(ctx, "food");
 
 		try
 		{
-			String nextLine= foodReader.readLine();
-			while (nextLine!=null)
+			String nextLine = foodReader.readLine();
+			while (nextLine != null)
 			{
-				fID=Integer.parseInt(nextLine);
-				nextLine= foodReader.readLine();
-				fName=nextLine;
-				nextLine= foodReader.readLine();
-				Uom=nextLine;
-				nextLine= foodReader.readLine();
-				while(!nextLine.equals(new String("/Cat")))
+				fID = Integer.parseInt(nextLine);
+				nextLine = foodReader.readLine();
+				fName = nextLine;
+				nextLine = foodReader.readLine();
+				Uom = nextLine;
+
+/*				while(!nextLine.equals(new String("/Cat")))
 				{
 					fCategory.add(Integer.parseInt(nextLine));
 					nextLine= foodReader.readLine();
 				}
-
-				newFood.put(fID,new Food(fID,fName,Uom,fCategory));
-				nextLine= foodReader.readLine();
+*/
+				newFood.put(fID, new Food(fID, fName, Uom, fCategory));
+				nextLine = foodReader.readLine();
 			}
 			foodReader.close();
 		} catch (IOException e)
@@ -155,34 +319,34 @@ public class DataManager
 		return newFood;
 	}
 
-	public HashMap readFoodEntry(Context ctx,Integer currPantry)
+	public HashMap readFoodEntry(Context ctx, Integer currPantry)
 	{
-		Integer fID=0;
-		Integer pID=0;
-		Integer QTYStocked=0;
-		Integer QTYpar=0;
+		Integer fID = 0;
+		Integer pID = 0;
+		Integer QTYStocked = 0;
+		Integer QTYpar = 0;
 
-		HashMap<Integer, FoodEntry> newFoodEntry= new HashMap<>();
+		HashMap<Integer, FoodEntry> newFoodEntry = new HashMap<>();
 
-		BufferedReader foodEntryReader=getFile(ctx,"foodEntry");
+		BufferedReader foodEntryReader = getFile(ctx, "foodEntry");
 
 		try
 		{
-			String nextLine= foodEntryReader.readLine();
-			while (nextLine!=null)
+			String nextLine = foodEntryReader.readLine();
+			while (nextLine != null)
 			{
-				fID=Integer.parseInt(nextLine);
-				nextLine= foodEntryReader.readLine();
-				pID=Integer.parseInt(nextLine);
-				nextLine= foodEntryReader.readLine();
-				QTYStocked=Integer.parseInt(nextLine);
-				nextLine= foodEntryReader.readLine();
-				QTYpar=Integer.parseInt(nextLine);
-				nextLine= foodEntryReader.readLine();
+				fID = Integer.parseInt(nextLine);
+				nextLine = foodEntryReader.readLine();
+				pID = Integer.parseInt(nextLine);
+				nextLine = foodEntryReader.readLine();
+				QTYStocked = Integer.parseInt(nextLine);
+				nextLine = foodEntryReader.readLine();
+				QTYpar = Integer.parseInt(nextLine);
+				nextLine = foodEntryReader.readLine();
 
-				if (pID==currPantry)
+				if (pID == currPantry)
 				{
-					newFoodEntry.put(fID,new FoodEntry(fID,pID,QTYStocked,QTYpar));
+					newFoodEntry.put(newFoodEntry.size(), new FoodEntry(fID, pID, QTYStocked, QTYpar));
 				}
 			}
 			foodEntryReader.close();
@@ -194,82 +358,84 @@ public class DataManager
 		return newFoodEntry;
 	}
 
-	public HashMap getFoodDetails(Context ctx, HashMap foodEntries)
+	public HashMap getFoodDetails(Context ctx, HashMap<Integer, FoodEntry> inventory)
 	{
-		String fName="";
-		String Uom="";
-		ArrayList<Integer> fCategory=new ArrayList<>();
+		Integer fID = 0;
+		String fName = "";
+		String Uom = "";
+		ArrayList<Integer> fCategory = new ArrayList<>();
 
-		BufferedReader foodReader=getFile(ctx,"food");
+		BufferedReader foodReader = getFile(ctx, "food");
+		
+		ArrayList<Integer> idList= new ArrayList<>();
 
-		ArrayList<Integer> foodList=new ArrayList<>();
-
-		for(Object entry: foodEntries.entrySet())
+		for (Integer i=0;i< inventory.size();i++)
 		{
-			FoodEntry newEntry= (FoodEntry) entry;
-			foodList.add(newEntry.fID);
+			idList.add(inventory.get(i).getfID());
 		}
 
-
-
+		
 		try
 		{
-			String nextLine= foodReader.readLine();
-			while (nextLine!=null)
+			String nextLine = foodReader.readLine();
+			Integer iFood = 0;
+			Integer currEntry=0;
+			while (nextLine != null)
 			{
-				for (Integer i = 0; i < foodEntries.size(); i++)
-				{
-					while (Integer.parseInt(nextLine)!=foodList.get(i) || nextLine!=null || !nextLine.equals("/Cat"))
-					{
-						nextLine=foodReader.readLine();
-
-					}
-					nextLine = foodReader.readLine();
-					fName = nextLine;
-					nextLine = foodReader.readLine();
-					Uom = nextLine;
-					nextLine = foodReader.readLine();
-					while (!nextLine.equals(new String("/Cat")))
+				fID = Integer.parseInt(nextLine);
+				nextLine = foodReader.readLine();
+				fName = nextLine;
+				nextLine = foodReader.readLine();
+				Uom = nextLine;
+/*					while (!nextLine.equals(new String("/Cat")))
 					{
 						fCategory.add(Integer.parseInt(nextLine));
 						nextLine = foodReader.readLine();
 					}
-
-
-					nextLine = foodReader.readLine();
+*/
+				if (idList.indexOf(fID)>=0)
+				{
+					inventory.get(currEntry).setfName(fName);
+					inventory.get(currEntry).setUoM(Uom);
+					inventory.get(currEntry).setfCategories(fCategory);
+					currEntry++;
 				}
+
+				nextLine = foodReader.readLine();
+
+				iFood++;
 			}
 			foodReader.close();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		
-		
-		return foodEntries;
+
+
+		return inventory;
 	}
 
 
 	public HashMap readCategories(Context ctx)
 	{
-		Integer cID=0;
-		String cName="";
+		Integer cID = 0;
+		String cName = "";
 
-		HashMap<Integer,String> newCategory= new HashMap<>();
+		HashMap<Integer, String> newCategory = new HashMap<>();
 
-		BufferedReader categoryReader=getFile(ctx,"category");
+		BufferedReader categoryReader = getFile(ctx, "category");
 
 		try
 		{
-			String nextLine= categoryReader.readLine();
-			while (nextLine!=null)
+			String nextLine = categoryReader.readLine();
+			while (nextLine != null)
 			{
-				cID=Integer.parseInt(nextLine);
-				nextLine= categoryReader.readLine();
-				cName=nextLine;
-				nextLine= categoryReader.readLine();
+				cID = Integer.parseInt(nextLine);
+				nextLine = categoryReader.readLine();
+				cName = nextLine;
+				nextLine = categoryReader.readLine();
 
-				newCategory.put(cID,cName);
+				newCategory.put(cID, cName);
 			}
 			categoryReader.close();
 		} catch (IOException e)
@@ -280,13 +446,13 @@ public class DataManager
 		return newCategory;
 	}
 
-	public void storePantry(Context ctx,HashMap<Integer,Pantry> pantryList)
+	public void storePantry(Context ctx, HashMap<Integer, Pantry> pantryList)
 	{
 		ctx.deleteFile("pantry");
 
-		StringBuilder newPantry=new StringBuilder();
+		StringBuilder newPantry = new StringBuilder();
 
-		for(Integer i=0; i< pantryList.size(); i++)
+		for (Integer i = 0; i < pantryList.size(); i++)
 		{
 			newPantry.append(pantryList.get(i).getpID().toString()).append(pantryList.get(i).getpName());
 			newPantry.append(pantryList.get(i).getpRoom()).append(pantryList.get(i).getpCount().toString()).append(pantryList.get(i).getpIcon().toString());
@@ -304,19 +470,19 @@ public class DataManager
 		}
 	}
 
-	public void storeFood(Context ctx,HashMap<Integer,Food> foodList)
+	public void storeFood(Context ctx, HashMap<Integer, Food> foodList)
 	{
 		ctx.deleteFile("food");
 
-		StringBuilder newFood=new StringBuilder();
+		StringBuilder newFood = new StringBuilder();
 
-		for(Integer i=0; i< foodList.size(); i++)
+		for (Integer i = 0; i < foodList.size(); i++)
 		{
 			newFood.append(foodList.get(i).getfID().toString()).append(foodList.get(i).getfName()).append(foodList.get(i).getUoM());
 
-			ArrayList<Integer> categories=new ArrayList<> (foodList.get(i).getfCategories());
+			ArrayList<Integer> categories = new ArrayList<>(foodList.get(i).getfCategories());
 
-			for (Integer j=0; j<categories.size();j++)
+			for (Integer j = 0; j < categories.size(); j++)
 			{
 				newFood.append(categories.get(j).toString());
 			}
@@ -338,9 +504,9 @@ public class DataManager
 	{
 		ctx.deleteFile("foodEntry");
 
-		StringBuilder newPantry=new StringBuilder();
+		StringBuilder newPantry = new StringBuilder();
 
-		for(Integer i=0; i< foodEntryList.size(); i++)
+		for (Integer i = 0; i < foodEntryList.size(); i++)
 		{
 			newPantry.append(foodEntryList.get(i).getfID().toString()).append(foodEntryList.get(i).getpID().toString());
 			newPantry.append(foodEntryList.get(i).getQTYstocked().toString()).append(foodEntryList.get(i).getQTYpar().toString());
@@ -358,13 +524,13 @@ public class DataManager
 		}
 	}
 
-	public void storeCategories(Context ctx,HashMap<Integer,String> categoryList)
+	public void storeCategories(Context ctx, HashMap<Integer, String> categoryList)
 	{
 		ctx.deleteFile("category");
 
-		StringBuilder newPantry=new StringBuilder();
+		StringBuilder newPantry = new StringBuilder();
 
-		for(Integer i=0; i< categoryList.size(); i++)
+		for (Integer i = 0; i < categoryList.size(); i++)
 		{
 			newPantry.append(i.toString()).append(categoryList.get(i));
 		}

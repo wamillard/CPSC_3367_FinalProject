@@ -11,19 +11,22 @@ import android.widget.TextView;
 
 import com.juarez_millard.finalproject.adapter.FoodEntryAdapter;
 import com.juarez_millard.finalproject.databinding.ActivityPantryBinding;
+import com.juarez_millard.finalproject.model.Food;
 import com.juarez_millard.finalproject.model.FoodEntry;
 import com.juarez_millard.finalproject.model.Pantry;
 import com.juarez_millard.finalproject.utility.DataManager;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class PantryActivity extends MainActivity
 {
 	private ActivityPantryBinding mBinding;
 	private DataManager dataManager=new DataManager();
-	public HashMap inventory; // (fID, FoodEntry)
+	public HashMap<Integer,FoodEntry> inventory; // (fID, FoodEntry)
 	public Pantry currentPantry;
 
 	@Override
@@ -33,7 +36,7 @@ public class PantryActivity extends MainActivity
 		mBinding = ActivityPantryBinding.inflate(getLayoutInflater());
 		setContentView(mBinding.getRoot());
 		Intent pantryOpened=getIntent();
-		List<Integer> pantryDetails;
+		HashMap<Integer, Food> pantryDetails;
 
 		currentPantry=(Pantry) pantryOpened.getParcelableExtra("Pantry");
 
@@ -42,8 +45,12 @@ public class PantryActivity extends MainActivity
 		currPantry.setText(currentPantry.pName);
 
 		inventory=dataManager.readFoodEntry(this,currentPantry.getpID());
+		Set<Integer> idList=inventory.keySet();
+		inventory=dataManager.getFoodDetails(this,inventory);
 
 
+
+		
 		RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
 		FoodEntryAdapter mAdapter=new FoodEntryAdapter(this,inventory);
 		mAdapter.setOnFoodEntryClickListener(new FoodEntryAdapter.OnFoodEntryClickListener()

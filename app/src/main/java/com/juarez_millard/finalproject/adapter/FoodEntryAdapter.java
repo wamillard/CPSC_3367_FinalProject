@@ -18,7 +18,6 @@ import java.util.HashMap;
 public class FoodEntryAdapter extends RecyclerView.Adapter
 {
 	private HashMap<Integer, FoodEntry> mFoodEntry;
-	private HashMap<Integer, Food> mFoodList;
 	private Context mContext;
 	private OnFoodEntryClickListener mOnFoodEntryClickListener;
 
@@ -44,9 +43,9 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 	public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		RecyclerView.ViewHolder vh;
-		View pantryView= LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_item_view,parent,false);
+		View foodEntryView= LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_item_view,parent , false);
 
-		vh=new FoodEntryViewHolder(pantryView);
+		vh=new FoodEntryViewHolder(foodEntryView);
 		return vh;
 	}
 
