@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
 import com.juarez_millard.finalproject.adapter.FoodEntryAdapter;
 import com.juarez_millard.finalproject.databinding.ActivityPantryBinding;
 import com.juarez_millard.finalproject.model.Food;
@@ -36,7 +37,6 @@ public class PantryActivity extends MainActivity
 		mBinding = ActivityPantryBinding.inflate(getLayoutInflater());
 		setContentView(mBinding.getRoot());
 		Intent pantryOpened=getIntent();
-		HashMap<Integer, Food> pantryDetails;
 
 		currentPantry=(Pantry) pantryOpened.getParcelableExtra("Pantry");
 
@@ -48,9 +48,6 @@ public class PantryActivity extends MainActivity
 		Set<Integer> idList=inventory.keySet();
 		inventory=dataManager.getFoodDetails(this,inventory);
 
-
-
-		
 		RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
 		FoodEntryAdapter mAdapter=new FoodEntryAdapter(this,inventory);
 		mAdapter.setOnFoodEntryClickListener(new FoodEntryAdapter.OnFoodEntryClickListener()
@@ -66,6 +63,15 @@ public class PantryActivity extends MainActivity
 		RecyclerView mainRecyclerView= this.mBinding.recyclerVPantryContents;
 		mainRecyclerView.setLayoutManager(layoutManager);
 		mainRecyclerView.setAdapter(mAdapter);
+
+		this.mBinding.btnBack.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				startActivity(new Intent(PantryActivity.this,MainActivity.class));
+			}
+		});
 
 	}
 }

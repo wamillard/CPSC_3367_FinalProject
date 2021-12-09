@@ -374,7 +374,6 @@ public class DataManager
 			idList.add(inventory.get(i).getfID());
 		}
 
-		
 		try
 		{
 			String nextLine = foodReader.readLine();
@@ -387,12 +386,7 @@ public class DataManager
 				fName = nextLine;
 				nextLine = foodReader.readLine();
 				Uom = nextLine;
-/*					while (!nextLine.equals(new String("/Cat")))
-					{
-						fCategory.add(Integer.parseInt(nextLine));
-						nextLine = foodReader.readLine();
-					}
-*/
+
 				if (idList.indexOf(fID)>=0)
 				{
 					inventory.get(currEntry).setfName(fName);

@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         pantryList=dataManager.readPantry(this);
 
-        foodList=dataManager.readFood(this);
-        categoryList=dataManager.readCategories(this);
 
 
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
@@ -65,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(layoutManager);
         mainRecyclerView.setAdapter(mAdapter);
 
+        if(pantryList.size()>3)
+        {
+            this.mBinding.imgVPantry.setVisibility(View.GONE);
+        }
 
 
 
