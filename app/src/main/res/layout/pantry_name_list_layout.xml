@@ -2,39 +2,55 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lyt_pantry_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:clickable="true">
 
     <ImageView
         android:id="@+id/imgV_pantryicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-      />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="196dp"
+        app:layout_constraintStart_toEndOf="@id/txtV_pantryname" />
 
     <TextView
         android:id="@+id/txtV_pantryname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:text="@string/PantryName"
         app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/txtV_pantrydescription"
+        android:id="@+id/txtV_pantryRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/PantryDescriptions"
-        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
-        app:layout_constraintTop_toBottomOf="@+id/txtV_pantryname"
-        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
-        android:paddingLeft="10dp"
-        />
+        android:padding="10dp"
+        android:text="Pantry Room"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtV_pantrycount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/PantryDescriptions"
+        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
+        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
+        app:layout_constraintTop_toBottomOf="@+id/txtV_pantryname" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

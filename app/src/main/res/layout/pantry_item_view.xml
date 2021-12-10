@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lyt_pantry_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtV_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bananas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtLayout_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txtV_item_name"
+        app:layout_constraintTop_toBottomOf="@id/txtV_item_name"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_baseline_add_circle"
+        app:startIconDrawable="@drawable/ic_baseline_minus_circle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtV_item_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="5"
+            app:layout_constraintStart_toStartOf="@id/txtV_item_name"
+            app:layout_constraintTop_toBottomOf="@id/txtV_item_name"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txtV_UoM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtLayout_qty"
+        app:layout_constraintStart_toEndOf="@id/txtLayout_qty"
+        android:padding="10dp"
+        android:text="ea"
+        />
+
+    <TextView
+        android:id="@+id/txtV_item_par"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtLayout_qty"
+        app:layout_constraintStart_toEndOf="@id/txtV_UoM"
+        android:text="1"
+        android:padding="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
