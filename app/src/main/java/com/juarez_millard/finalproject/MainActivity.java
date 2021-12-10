@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private DataManager dataManager;
 
     public HashMap pantryList;    // (pID, Pantry)
-    public HashMap foodList;       // (fID, Food)
-    public HashMap inventory; // (fID, FoodEntry)
-    public HashMap categoryList;  // (cID, cName)
 
 
     @Override

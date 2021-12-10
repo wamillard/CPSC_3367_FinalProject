@@ -323,7 +323,7 @@ public class DataManager
 	{
 		Integer fID = 0;
 		Integer pID = 0;
-		Integer QTYStocked = 0;
+		Integer QTYstocked = 0;
 		Integer QTYpar = 0;
 
 		HashMap<Integer, FoodEntry> newFoodEntry = new HashMap<>();
@@ -339,14 +339,14 @@ public class DataManager
 				nextLine = foodEntryReader.readLine();
 				pID = Integer.parseInt(nextLine);
 				nextLine = foodEntryReader.readLine();
-				QTYStocked = Integer.parseInt(nextLine);
+				QTYstocked = Integer.parseInt(nextLine);
 				nextLine = foodEntryReader.readLine();
 				QTYpar = Integer.parseInt(nextLine);
 				nextLine = foodEntryReader.readLine();
 
 				if (pID == currPantry)
 				{
-					newFoodEntry.put(newFoodEntry.size(), new FoodEntry(fID, pID, QTYStocked, QTYpar));
+					newFoodEntry.put(newFoodEntry.size(), new FoodEntry(fID, pID, QTYstocked, QTYpar));
 				}
 			}
 			foodEntryReader.close();
@@ -366,7 +366,6 @@ public class DataManager
 		ArrayList<Integer> fCategory = new ArrayList<>();
 
 		BufferedReader foodReader = getFile(ctx, "food");
-		
 		ArrayList<Integer> idList= new ArrayList<>();
 
 		for (Integer i=0;i< inventory.size();i++)
@@ -409,6 +408,13 @@ public class DataManager
 		return inventory;
 	}
 
+	public HashMap getCategoryDetails(Context ctx, HashMap<Integer,FoodEntry> inventory)
+	{
+
+
+
+		return inventory;
+	}
 
 	public HashMap readCategories(Context ctx)
 	{
