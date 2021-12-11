@@ -20,29 +20,32 @@
 
         <TextView
             android:id="@+id/txtV_Pantrytitle"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Pantry"
-            android:padding="5dp"
+            android:padding="10dp"
             android:textStyle="bold"
             android:textSize="40dp"
-            android:textColor="@color/black"
+            android:textColor="@color/blue_greyish"
             />
 
         <TextView
             android:id="@+id/txtVPantrydesctitle"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pantrytext"
+            android:textColor="@color/teal_ish"
             android:padding="5dp"
             android:textStyle="normal"
             android:textSize="20dp"
-            android:textColor="@color/gray"
 
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
@@ -60,6 +63,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat ="@android:drawable/ic_menu_add"
+        android:backgroundTint="@color/orange_dark"
         />
 
 

@@ -11,22 +11,25 @@
         android:layout_height="wrap_content"
         android:text="@string/AddItemTitle"
         android:layout_marginTop="15dp"
-        android:padding="15dp"
+        android:padding="20dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/light_tan_orange"
+        android:textAlignment="center"
         />
 
     <TextView
         android:id="@+id/txtV_selectPantry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="28dp"
         app:layout_constraintTop_toBottomOf="@+id/txtV_AdditemTitle"
-        android:textColor="@color/black"
         android:text="Select Pantry:"
+        android:textColor="@color/teal_ish"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="20sp"
         />
 
     <com.google.android.material.chip.ChipGroup
@@ -34,25 +37,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_selectPantry"
+        app:selectionRequired="true"
         >
 
         <com.google.android.material.chip.Chip
+            android:layout_marginLeft="15dp"
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refrigerator"/>
+            android:text="Refrigerator"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            app:chipBackgroundColor="@color/blue_greyish"
+            />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kitchen"/>
+            android:text="Kitchen"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            app:chipBackgroundColor="@color/blue_greyish"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Freezer"/>
+            android:text="Freezer"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            app:chipBackgroundColor="@color/blue_greyish"/>
     </com.google.android.material.chip.ChipGroup>
 
 
@@ -60,12 +75,13 @@
         android:id="@+id/txtV_itemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Item Name: "
-        android:textSize="15dp"
-        android:paddingLeft="15dp"
-        android:textColor="@color/black"
+        android:layout_margin="15dp"
+        android:text="Item Name:"
         app:layout_constraintTop_toBottomOf="@+id/chipgroup_Selectpantry"
+        android:textColor="@color/teal_ish"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="18sp"
         />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,25 +89,31 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_itemname"
+        app:boxBackgroundColor="@color/orange"
+        android:textColorHint="@color/white"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Bananas" />
+            android:hint="Bananas"
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtV_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/teal_ish"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="18sp"
         android:text="Quantity:"
         android:layout_margin="10dp"
         android:paddingLeft="10dp"
         android:layout_marginTop="28dp"
-        android:textSize="15dp"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/txtInputlyt_itemname"
 
         />
@@ -100,6 +122,10 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_quantity"
+        app:boxBackgroundColor="@color/orange"
+        android:textColorHint="@color/white"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,11 +144,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Unit of measure"
+        android:textColor="@color/teal_ish"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="18sp"
         android:layout_margin="10dp"
         android:layout_marginTop="28dp"
-        android:textSize="15dp"
         android:paddingLeft="20dp"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/txtInputlyt_itemname"
         app:layout_constraintLeft_toRightOf="@+id/txtV_quantity"
         />
@@ -133,6 +161,10 @@
         app:layout_constraintLeft_toRightOf="@+id/txtV_quantity"
         app:layout_constraintTop_toBottomOf="@+id/txtV_unitofmeasure"
         android:layout_marginLeft="20dp"
+        app:boxBackgroundColor="@color/orange"
+        android:textColorHint="@color/white"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -153,7 +185,9 @@
         android:layout_height="wrap_content"
         android:text="@string/AddItemTitle"
         tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="584dp" />
+        tools:layout_editor_absoluteY="584dp"
+        android:backgroundTint="@color/teal_ish"
+        />
 
 
 
