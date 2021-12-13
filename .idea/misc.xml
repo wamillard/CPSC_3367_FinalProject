@@ -9,7 +9,7 @@
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/activity_pantry.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
-        <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/additem_layout.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/additem_layout.xml" value="0.45" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/pantry_contents.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/pantry_item_layout.xml" value="0.3671875" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/pantry_item_view.xml" value="0.335" />
@@ -17,19 +17,10 @@
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/layout/pantrylist_layout.xml" value="0.335" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/mipmap-anydpi-v26/ic_splash.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/Asa-T/Documents/Android Studio/FinalProject/app/src/main/res/xml/datasource.xml" value="0.20572916666666666" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2109375" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/drawable/ic_baseline_add_circle.xml" value="0.2109375" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2109375" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/drawable/ic_pantry_1.xml" value="0.2109375" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/activity_pantry.xml" value="0.33" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/additem_layout.xml" value="0.33" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/pantry_item_view.xml" value="0.33" />
-        <entry key="..\:/Users/sandr/AndroidStudioProjects/CPSC_3367_FinalProject/app/src/main/res/layout/pantry_name_list_layout.xml" value="0.33" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

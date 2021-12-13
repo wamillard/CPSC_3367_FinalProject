@@ -19,14 +19,17 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtLayout_qty"
+        android:id="@+id/layoutQTY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/txtV_item_name"
         app:layout_constraintTop_toBottomOf="@id/txtV_item_name"
+        app:startIconDrawable="@drawable/ic_baseline_minus_circle"
+        app:startIconCheckable="true"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_baseline_add_circle"
-        app:startIconDrawable="@drawable/ic_baseline_minus_circle">
+        app:endIconCheckable="true"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtV_item_qty"
@@ -36,7 +39,6 @@
             android:text="5"
             app:layout_constraintStart_toStartOf="@id/txtV_item_name"
             app:layout_constraintTop_toBottomOf="@id/txtV_item_name"
-
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,8 +47,8 @@
         android:id="@+id/txtV_UoM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/txtLayout_qty"
-        app:layout_constraintStart_toEndOf="@id/txtLayout_qty"
+        app:layout_constraintTop_toTopOf="@id/layoutQTY"
+        app:layout_constraintStart_toEndOf="@id/layoutQTY"
         android:padding="10dp"
         android:text="ea"
         />

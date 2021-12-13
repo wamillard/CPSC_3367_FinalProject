@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         app:layout_constraintTop_toBottomOf="@+id/txtV_AdditemTitle"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="Select Pantry:"
         android:textColor="@color/teal_ish"
         android:textStyle="bold"
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_selectPantry"
+        app:layout_constraintStart_toStartOf="parent"
         app:selectionRequired="true"
         >
 
@@ -78,6 +80,7 @@
         android:layout_margin="15dp"
         android:text="Item Name:"
         app:layout_constraintTop_toBottomOf="@+id/chipgroup_Selectpantry"
+        app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/teal_ish"
         android:textStyle="bold"
         android:padding="10dp"
@@ -89,6 +92,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_itemname"
+        app:layout_constraintStart_toStartOf="parent"
         app:boxBackgroundColor="@color/orange"
         android:textColorHint="@color/white"
         app:boxCornerRadiusTopEnd="15dp"
@@ -100,6 +104,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="Bananas"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -115,13 +121,14 @@
         android:paddingLeft="10dp"
         android:layout_marginTop="28dp"
         app:layout_constraintTop_toBottomOf="@+id/txtInputlyt_itemname"
-
+        app:layout_constraintStart_toStartOf="parent"
         />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/txtV_quantity"
+        app:layout_constraintStart_toStartOf="parent"
         app:boxBackgroundColor="@color/orange"
         android:textColorHint="@color/white"
         app:boxCornerRadiusTopEnd="15dp"
@@ -156,6 +163,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutUoM"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/txtV_quantity"
@@ -178,18 +186,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/AddItemTitle"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="584dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/teal_ish"
-        />
-
-
+        android:text="@string/AddItemTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutUoM" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

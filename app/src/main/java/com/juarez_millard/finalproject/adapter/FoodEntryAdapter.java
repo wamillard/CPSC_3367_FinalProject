@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.juarez_millard.finalproject.R;
 import com.juarez_millard.finalproject.model.Food;
 import com.juarez_millard.finalproject.model.FoodEntry;
@@ -70,7 +72,8 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 	public class FoodEntryViewHolder extends RecyclerView.ViewHolder
 	{
 		public TextView mfName;
-		public TextView mQTYStocked;
+		public TextInputLayout mlayoutQTY;
+		public TextInputEditText mQTYStocked;
 		public TextView mQTYPar;
 		public TextView mUoM;
 		public View lyt_parent;
@@ -79,10 +82,21 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 		{
 			super(v);
 			mfName =v.findViewById(R.id.txtV_item_name);
+			mlayoutQTY=v.findViewById(R.id.layoutQTY);
 			mQTYStocked =v.findViewById(R.id.txtV_item_qty);
 			mQTYPar=v.findViewById(R.id.txtV_item_par);
 			mUoM=v.findViewById(R.id.txtV_UoM);
 			lyt_parent=v.findViewById(R.id.lyt_pantry_view);
+
+			this.mlayoutQTY.setStartIconOnClickListener(new View.OnClickListener()
+			{
+				@Override
+				public void onClick(View v)
+				{
+
+				}
+			});
+
 
 			lyt_parent.setOnClickListener(new View.OnClickListener()
 			{

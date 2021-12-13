@@ -58,6 +58,8 @@ public class PantryActivity extends MainActivity
 
 			}
 
+
+
 		});
 
 		RecyclerView mainRecyclerView= this.mBinding.recyclerVPantryContents;
@@ -72,6 +74,7 @@ public class PantryActivity extends MainActivity
 				startActivity(new Intent(PantryActivity.this,MainActivity.class));
 			}
 		});
+
 
 	}
 }
