@@ -57,7 +57,7 @@
         android:id="@+id/txtV_item_par"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/txtLayout_qty"
+        app:layout_constraintTop_toTopOf="@id/layoutQTY"
         app:layout_constraintStart_toEndOf="@id/txtV_UoM"
         android:text="1"
         android:padding="10dp"

@@ -40,6 +40,15 @@ public class PantryActivity extends MainActivity
 
 		currentPantry=(Pantry) pantryOpened.getParcelableExtra("Pantry");
 
+		this.mBinding.btnBack.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				startActivity(new Intent(PantryActivity.this,MainActivity.class));
+			}
+		});
+
 		TextView currPantry=findViewById(this.mBinding.txtVPantryName.getId());
 
 		currPantry.setText(currentPantry.pName);
@@ -50,30 +59,21 @@ public class PantryActivity extends MainActivity
 
 		RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
 		FoodEntryAdapter mAdapter=new FoodEntryAdapter(this,inventory);
+
 		mAdapter.setOnFoodEntryClickListener(new FoodEntryAdapter.OnFoodEntryClickListener()
 		{
 			@Override
 			public void onFoodEntryClick(View view, FoodEntry fEntry, Integer position)
 			{
-
+				//Edit FoodEntry
+				Integer pause=0;
 			}
-
-
-
 		});
 
 		RecyclerView mainRecyclerView= this.mBinding.recyclerVPantryContents;
 		mainRecyclerView.setLayoutManager(layoutManager);
 		mainRecyclerView.setAdapter(mAdapter);
 
-		this.mBinding.btnBack.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				startActivity(new Intent(PantryActivity.this,MainActivity.class));
-			}
-		});
 
 
 	}

@@ -22,7 +22,6 @@
             app:layout_constraintLeft_toRightOf="@+id/txtV_PantryName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_height=""
 
 
             />

@@ -25,8 +25,8 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 
 	public FoodEntryAdapter(Context ctx, HashMap inventoryList)
 	{
-		this.mFoodEntry =inventoryList;
-		this.mContext=ctx;
+		this.mFoodEntry = inventoryList;
+		this.mContext = ctx;
 	}
 
 	public interface OnFoodEntryClickListener
@@ -36,7 +36,7 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 
 	public void setOnFoodEntryClickListener(final OnFoodEntryClickListener mFoodEntryClickListener)
 	{
-		this.mOnFoodEntryClickListener=mFoodEntryClickListener;
+		this.mOnFoodEntryClickListener = mFoodEntryClickListener;
 	}
 
 
@@ -45,17 +45,17 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 	public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		RecyclerView.ViewHolder vh;
-		View foodEntryView= LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_item_view,parent , false);
+		View foodEntryView = LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_item_view, parent, false);
 
-		vh=new FoodEntryViewHolder(foodEntryView);
+		vh = new FoodEntryViewHolder(foodEntryView);
 		return vh;
 	}
 
 	@Override
 	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position)
 	{
-		FoodEntryViewHolder viewHolder= (FoodEntryViewHolder) holder;
-		FoodEntry p= mFoodEntry.get(position);
+		FoodEntryViewHolder viewHolder = (FoodEntryViewHolder) holder;
+		FoodEntry p = mFoodEntry.get(position);
 		viewHolder.mfName.setText(p.getfName());
 		viewHolder.mQTYStocked.setText(p.getQTYstocked().toString());
 		viewHolder.mQTYPar.setText(p.getQTYpar().toString());
@@ -71,8 +71,9 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 
 	public class FoodEntryViewHolder extends RecyclerView.ViewHolder
 	{
+
 		public TextView mfName;
-		public TextInputLayout mlayoutQTY;
+		public TextInputLayout mLayoutQTY;
 		public TextInputEditText mQTYStocked;
 		public TextView mQTYPar;
 		public TextView mUoM;
@@ -81,29 +82,44 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 		public FoodEntryViewHolder(View v)
 		{
 			super(v);
-			mfName =v.findViewById(R.id.txtV_item_name);
-			mlayoutQTY=v.findViewById(R.id.layoutQTY);
-			mQTYStocked =v.findViewById(R.id.txtV_item_qty);
-			mQTYPar=v.findViewById(R.id.txtV_item_par);
-			mUoM=v.findViewById(R.id.txtV_UoM);
-			lyt_parent=v.findViewById(R.id.lyt_pantry_view);
+			mfName = v.findViewById(R.id.txtV_item_name);
+			mLayoutQTY = v.findViewById(R.id.layoutQTY);
+			mQTYStocked = v.findViewById(R.id.txtV_item_qty);
+			mQTYPar = v.findViewById(R.id.txtV_item_par);
+			mUoM = v.findViewById(R.id.txtV_UoM);
+			lyt_parent = v.findViewById(R.id.lyt_pantry_view);
 
-			this.mlayoutQTY.setStartIconOnClickListener(new View.OnClickListener()
+			mLayoutQTY.setStartIconOnClickListener(new View.OnClickListener()
 			{
 				@Override
 				public void onClick(View v)
 				{
-
+					Integer currQTY = Integer.parseInt(mQTYStocked.getText().toString());
+					if (currQTY >= 1)
+					{
+						currQTY = currQTY - 1;
+						mQTYStocked.setText(currQTY.toString());
+					}
 				}
 			});
 
+			mLayoutQTY.setEndIconOnClickListener(new View.OnClickListener()
+			{
+				@Override
+				public void onClick(View v)
+				{
+					Integer currQTY = Integer.parseInt(mQTYStocked.getText().toString());
+					currQTY = currQTY + 1;
+					mQTYStocked.setText(currQTY.toString());
+				}
+			});
 
 			lyt_parent.setOnClickListener(new View.OnClickListener()
 			{
 				@Override
 				public void onClick(View view)
 				{
-					mOnFoodEntryClickListener.onFoodEntryClick(view, mFoodEntry.get(getLayoutPosition()),getLayoutPosition());
+					mOnFoodEntryClickListener.onFoodEntryClick(view, mFoodEntry.get(getLayoutPosition()), getLayoutPosition());
 				}
 			});
 		}
