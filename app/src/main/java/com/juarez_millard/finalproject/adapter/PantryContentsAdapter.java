@@ -1,6 +1,5 @@
 package com.juarez_millard.finalproject.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,31 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.juarez_millard.finalproject.R;
-import com.juarez_millard.finalproject.model.Food;
-import com.juarez_millard.finalproject.model.FoodEntry;
+import com.juarez_millard.finalproject.db.entity.Food;
+import com.juarez_millard.finalproject.db.entity.PantryContents;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FoodEntryAdapter extends RecyclerView.Adapter
+public class PantryContentsAdapter extends RecyclerView.Adapter
 {
-	private HashMap<Integer, FoodEntry> mFoodEntry;
-	private Context mContext;
-	private OnFoodEntryClickListener mOnFoodEntryClickListener;
+	private List<PantryContents> mInventory=new ArrayList<>();
+	private List<Food> mFood=new ArrayList<>();
+	private OnInventoryItemClickListener mOnInventoryItemClickListener;
 
-	public FoodEntryAdapter(Context ctx, HashMap inventoryList)
+	public void updateInventory(List<PantryContents> pantryContents,List<Food> foodList)
 	{
-		this.mFoodEntry = inventoryList;
-		this.mContext = ctx;
+		this.mInventory=pantryContents;
+		this.mFood=foodList;
+		notifyDataSetChanged();
 	}
 
-	public interface OnFoodEntryClickListener
+
+	public interface OnInventoryItemClickListener
 	{
-		void onFoodEntryClick(View view, FoodEntry fEntry, Integer position);
+		void onInventoryItemClick(View view, PantryContents fInventory, Integer position);
 	}
 
-	public void setOnFoodEntryClickListener(final OnFoodEntryClickListener mFoodEntryClickListener)
+	public void setOnInventoryItemClickListener(final OnInventoryItemClickListener mInventoryItemClickListener)
 	{
-		this.mOnFoodEntryClickListener = mFoodEntryClickListener;
+		this.mOnInventoryItemClickListener = mInventoryItemClickListener;
 	}
 
 
@@ -47,29 +49,29 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 		RecyclerView.ViewHolder vh;
 		View foodEntryView = LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_item_view, parent, false);
 
-		vh = new FoodEntryViewHolder(foodEntryView);
-		return vh;
+		return new InventoryViewHolder(foodEntryView);
 	}
 
 	@Override
 	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position)
 	{
-		FoodEntryViewHolder viewHolder = (FoodEntryViewHolder) holder;
-		FoodEntry p = mFoodEntry.get(position);
-		viewHolder.mfName.setText(p.getfName());
-		viewHolder.mQTYStocked.setText(p.getQTYstocked().toString());
-		viewHolder.mQTYPar.setText(p.getQTYpar().toString());
-		viewHolder.mUoM.setText(p.getUoM());
+		InventoryViewHolder viewHolder = (InventoryViewHolder) holder;
+		PantryContents p = mInventory.get(position);
+		Food f=mFood.get(p.getfID());
+		viewHolder.mfName.setText(f.getfName());
+		viewHolder.mQTYStocked.setText(p.getQTYstocked());
+		viewHolder.mQTYPar.setText(p.getQTYpar());
+		viewHolder.mUoM.setText(f.getUoM());
 
 	}
 
 	@Override
 	public int getItemCount()
 	{
-		return this.mFoodEntry.size();
+		return this.mInventory.size();
 	}
 
-	public class FoodEntryViewHolder extends RecyclerView.ViewHolder
+	public class InventoryViewHolder extends RecyclerView.ViewHolder
 	{
 
 		public TextView mfName;
@@ -79,7 +81,7 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 		public TextView mUoM;
 		public View lyt_parent;
 
-		public FoodEntryViewHolder(View v)
+		public InventoryViewHolder(View v)
 		{
 			super(v);
 			mfName = v.findViewById(R.id.txtV_item_name);
@@ -119,7 +121,7 @@ public class FoodEntryAdapter extends RecyclerView.Adapter
 				@Override
 				public void onClick(View view)
 				{
-					mOnFoodEntryClickListener.onFoodEntryClick(view, mFoodEntry.get(getLayoutPosition()), getLayoutPosition());
+					mOnInventoryItemClickListener.onInventoryItemClick(view, mInventory.get(getLayoutPosition()), getLayoutPosition());
 				}
 			});
 		}

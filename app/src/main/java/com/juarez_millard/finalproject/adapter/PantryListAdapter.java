@@ -1,10 +1,8 @@
 package com.juarez_millard.finalproject.adapter;
 
-import android.content.Context;
+import static org.chromium.base.ContextUtils.getApplicationContext;
+
 import android.content.res.Resources;
-import android.content.res.loader.ResourcesLoader;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,31 +13,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juarez_millard.finalproject.R;
-import com.juarez_millard.finalproject.model.Pantry;
+import com.juarez_millard.finalproject.activity.OnPantryClickListener;
+import com.juarez_millard.finalproject.db.entity.Pantry;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public class PantryAdapter extends RecyclerView.Adapter
+
+public class PantryListAdapter extends RecyclerView.Adapter
 {
-	private HashMap<Integer, Pantry> mPantry;
-	private Context mContext;
+	private List<Pantry> mPantry=new ArrayList<>();
 	private OnPantryClickListener mOnPantryClickListener;
 
-	public PantryAdapter(Context ctx, HashMap pantryList)
+	public void updatePantryList(List<Pantry> pantries)
 	{
-		this.mPantry=pantryList;
-		this.mContext=ctx;
+		this.mPantry=pantries;
+		notifyDataSetChanged();
 	}
 
 
-	public interface OnPantryClickListener
+	public void setOnPantryClickListener(final OnPantryClickListener onPantryClickListener)
 	{
-		void onPantryClick(View view, Pantry pantry, Integer position);
-	}
-
-	public void setOnPantryClickListener(final OnPantryClickListener mPantryClickListener)
-	{
-		this.mOnPantryClickListener = mPantryClickListener;
+		this.mOnPantryClickListener = onPantryClickListener;
 	}
 
 
@@ -47,11 +42,8 @@ public class PantryAdapter extends RecyclerView.Adapter
 	@Override
 	public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
-		RecyclerView.ViewHolder vh;
 		View pantryView= LayoutInflater.from(parent.getContext()).inflate(R.layout.pantry_name_list_layout,parent,false);
-
-		vh=new PantryViewHolder(pantryView);
-		return vh;
+		return new PantryViewHolder(pantryView);
 	}
 
 	@Override
@@ -60,13 +52,11 @@ public class PantryAdapter extends RecyclerView.Adapter
 		PantryViewHolder viewHolder= (PantryViewHolder) holder;
 		Pantry p=mPantry.get(position);
 		viewHolder.mPantryName.setText(p.getpName());
-		viewHolder.mPantryCount.setText(p.getpCount().toString());
+		viewHolder.mPantryCount.setText(p.getpCount());
 		viewHolder.mPantryRoom.setText(p.getpRoom());
 
-		StringBuilder pantry_icon_path= new StringBuilder("@drawable/ic_pantry_").append(p.getpIcon().toString());
-		viewHolder.mpIcon.setImageResource(mContext.getResources().getIdentifier(pantry_icon_path.toString(),"id", mContext.getPackageName()));
-
-
+		StringBuilder pantry_icon_path= new StringBuilder("@drawable/ic_pantry_").append(p.getpIcon());
+		viewHolder.mpIcon.setImageResource(Resources.getSystem().getIdentifier(pantry_icon_path.toString(),"id",getApplicationContext().getPackageName()));
 
 	}
 
