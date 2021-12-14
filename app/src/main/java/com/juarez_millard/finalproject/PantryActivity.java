@@ -1,6 +1,5 @@
 package com.juarez_millard.finalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,24 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
 import com.juarez_millard.finalproject.adapter.FoodEntryAdapter;
 import com.juarez_millard.finalproject.databinding.ActivityPantryBinding;
-import com.juarez_millard.finalproject.model.Food;
 import com.juarez_millard.finalproject.model.FoodEntry;
 import com.juarez_millard.finalproject.model.Pantry;
 import com.juarez_millard.finalproject.utility.DataManager;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 
 public class PantryActivity extends MainActivity
 {
 	private ActivityPantryBinding mBinding;
-	private DataManager dataManager=new DataManager();
+	private DataManager dm =new DataManager();
 	public HashMap<Integer,FoodEntry> inventory; // (fID, FoodEntry)
 	public Pantry currentPantry;
 
@@ -40,6 +35,18 @@ public class PantryActivity extends MainActivity
 
 		currentPantry=(Pantry) pantryOpened.getParcelableExtra("Pantry");
 
+
+		TextView currPantry=findViewById(this.mBinding.txtVPantryName.getId());
+
+		currPantry.setText(currentPantry.pName);
+
+		inventory= dm.readFoodEntry(this,currentPantry.getpID());
+		Set<Integer> idList=inventory.keySet();
+		inventory= dm.getFoodDetails(this,inventory);
+
+		RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
+		FoodEntryAdapter mAdapter=new FoodEntryAdapter(this,inventory);
+
 		this.mBinding.btnBack.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -49,17 +56,6 @@ public class PantryActivity extends MainActivity
 			}
 		});
 
-		TextView currPantry=findViewById(this.mBinding.txtVPantryName.getId());
-
-		currPantry.setText(currentPantry.pName);
-
-		inventory=dataManager.readFoodEntry(this,currentPantry.getpID());
-		Set<Integer> idList=inventory.keySet();
-		inventory=dataManager.getFoodDetails(this,inventory);
-
-		RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
-		FoodEntryAdapter mAdapter=new FoodEntryAdapter(this,inventory);
-
 		mAdapter.setOnFoodEntryClickListener(new FoodEntryAdapter.OnFoodEntryClickListener()
 		{
 			@Override
@@ -67,6 +63,19 @@ public class PantryActivity extends MainActivity
 			{
 				//Edit FoodEntry
 				Integer pause=0;
+			}
+		});
+		this.mBinding.fABAddItemtoPantry.setOnClickListener(new View.OnClickListener()
+		{
+
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent toAdd=new Intent(PantryActivity.this,AddItemActivity.class);
+				toAdd.putExtra("PantryID",currentPantry.getpID());
+				startActivity(toAdd);
+
 			}
 		});
 

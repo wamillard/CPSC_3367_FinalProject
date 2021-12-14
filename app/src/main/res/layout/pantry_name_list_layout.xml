@@ -29,8 +29,10 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/PantryName"
-        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/imgV_pantryicon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        />
 
 
     <TextView
@@ -39,7 +41,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="Pantry Room"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -48,9 +50,11 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:text="@string/PantryDescriptions"
-        app:layout_constraintBottom_toBottomOf="@+id/imgV_pantryicon"
-        app:layout_constraintLeft_toRightOf="@+id/imgV_pantryicon"
-        app:layout_constraintTop_toBottomOf="@+id/txtV_pantryname" />
+        app:layout_constraintStart_toEndOf="@id/imgV_pantryicon"
+        app:layout_constraintTop_toBottomOf="@id/txtV_pantryname"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="@id/imgV_pantryicon"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

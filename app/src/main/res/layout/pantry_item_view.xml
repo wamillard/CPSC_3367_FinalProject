@@ -8,14 +8,16 @@
 
     <TextView
         android:id="@+id/txtV_item_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bananas"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:textStyle="bold"
+        android:textSize="@dimen/spacing_smlarge"
         />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,6 +31,7 @@
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_baseline_add_circle"
         app:endIconCheckable="true"
+        android:layout_marginBottom="20dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -37,6 +40,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="5"
+            android:textSize="@dimen/spacing_smlarge"
             app:layout_constraintStart_toStartOf="@id/txtV_item_name"
             app:layout_constraintTop_toBottomOf="@id/txtV_item_name"
             />
@@ -47,9 +51,13 @@
         android:id="@+id/txtV_UoM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/layoutQTY"
         app:layout_constraintStart_toEndOf="@id/layoutQTY"
+        app:layout_constraintTop_toTopOf="@id/layoutQTY"
+        app:layout_constraintEnd_toStartOf="@id/txtV_item_par"
+        app:layout_constraintBottom_toBottomOf="@id/layoutQTY"
         android:padding="10dp"
+        android:layout_marginLeft="@dimen/spacing_medium"
+        android:textSize="@dimen/spacing_smlarge"
         android:text="ea"
         />
 
@@ -58,9 +66,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/layoutQTY"
-        app:layout_constraintStart_toEndOf="@id/txtV_UoM"
+        app:layout_constraintStart_toEndOf="@id/layoutQTY"
+        app:layout_constraintBottom_toBottomOf="@id/layoutQTY"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="1"
         android:padding="10dp"
+        android:textSize="@dimen/spacing_smlarge"
+        android:clickable="true"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
