@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataManager dataManager=new DataManager();
 
-//        dataManager.recreateAllfiles(this);
+        dataManager.recreateAllfiles(this);
 
 
         pantryList=dataManager.readPantry(this);
