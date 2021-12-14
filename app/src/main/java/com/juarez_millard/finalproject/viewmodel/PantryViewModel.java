@@ -1,6 +1,9 @@
 package com.juarez_millard.finalproject.viewmodel;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
+import android.os.AsyncTask;
+
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,7 +16,6 @@ import com.juarez_millard.finalproject.db.entity.Food;
 import com.juarez_millard.finalproject.db.entity.Pantry;
 import com.juarez_millard.finalproject.db.entity.PantryContents;
 
-import org.chromium.base.task.AsyncTask;
 
 import java.util.List;
 
@@ -41,6 +43,23 @@ public class PantryViewModel extends AndroidViewModel
 		pantryInv = pantryDatabase.getInventoryDao().inventoryList();
 		categorizedFood = pantryDatabase.getFoodCatDao().allCategorizedList();
 
+	}
+
+	public void populatePantry(final List<Pantry> pList)
+	{
+		new AsyncTask<List<Pantry>, Void, Void>()
+		{
+			@Override
+			protected Void doInBackground(List<Pantry>... lists)
+			{
+					pantryDatabase.getPantryDao().insertPantries(lists[0].toArray(new Pantry[lists[0].size()]));
+
+				return null;
+			}
+
+
+
+		}.execute(pList);
 	}
 
 	public void populateDB(List<Pantry> pList, List<Food> fList, List<Category> cList, List<PantryContents> pcList, List<CategorizedFood> cfList)

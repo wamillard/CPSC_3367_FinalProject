@@ -51,12 +51,12 @@ public class PantryListAdapter extends RecyclerView.Adapter
 	{
 		PantryViewHolder viewHolder= (PantryViewHolder) holder;
 		Pantry p=mPantry.get(position);
-		viewHolder.mPantryName.setText(p.getpName());
-		viewHolder.mPantryCount.setText(p.getpCount());
-		viewHolder.mPantryRoom.setText(p.getpRoom());
+		viewHolder.mPantryName.setText(p.getpName().toString());
+		viewHolder.mPantryCount.setText(p.getpCount().toString());
+		viewHolder.mPantryRoom.setText(p.getpRoom().toString());
 
-		StringBuilder pantry_icon_path= new StringBuilder("@drawable/ic_pantry_").append(p.getpIcon());
-		viewHolder.mpIcon.setImageResource(Resources.getSystem().getIdentifier(pantry_icon_path.toString(),"id",getApplicationContext().getPackageName()));
+//		StringBuilder pantry_icon_path= new StringBuilder("@drawable/ic_pantry_").append(p.getpIcon().toString());
+//		viewHolder.mpIcon.setImageResource(Resources.getSystem().getIdentifier(pantry_icon_path.toString(),"id",getApplicationContext().getPackageName()));
 
 	}
 

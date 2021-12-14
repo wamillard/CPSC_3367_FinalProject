@@ -17,7 +17,8 @@ import com.juarez_millard.finalproject.db.entity.Food;
 import com.juarez_millard.finalproject.db.entity.Pantry;
 import com.juarez_millard.finalproject.db.entity.PantryContents;
 
-@Database(entities = {Pantry.class, Food.class, PantryContents.class, CategorizedFood.class, Category.class}, version = 1)
+@Database(entities = {Pantry.class, Food.class, PantryContents.class, CategorizedFood.class, Category.class},
+		version = 1)
 public abstract class PantryDatabase extends RoomDatabase
 {
 	abstract public PantryDao getPantryDao();
@@ -25,6 +26,7 @@ public abstract class PantryDatabase extends RoomDatabase
 	abstract public CategoryDao getCategoryDao();
 	abstract public FoodCatDao getFoodCatDao();
 	abstract public InventoryDao getInventoryDao();
+
 
 	private static PantryDatabase dbInstance;
 

@@ -1,5 +1,6 @@
 package com.juarez_millard.finalproject.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 import com.juarez_millard.finalproject.R;
 import com.juarez_millard.finalproject.adapter.PantryListAdapter;
 import com.juarez_millard.finalproject.databinding.PantryListFragmentBinding;
+import com.juarez_millard.finalproject.db.PantryDatabase;
+import com.juarez_millard.finalproject.db.dao.PantryDao;
 import com.juarez_millard.finalproject.db.entity.Pantry;
 import com.juarez_millard.finalproject.utility.DataManager;
 import com.juarez_millard.finalproject.viewmodel.PantryViewModel;
@@ -37,6 +40,9 @@ public class PantryFragment extends Fragment implements OnPantryClickListener
 	public void onCreate(@Nullable Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+
+
 
 	}
 
@@ -72,15 +78,26 @@ public class PantryFragment extends Fragment implements OnPantryClickListener
 		this.mAdapter.setOnPantryClickListener(this);
 		this.mRecyclerView=parent.findViewById(R.id.recyclerView_Pantry);
 		mViewModel=new ViewModelProvider(this.getActivity()).get(PantryViewModel.class);
+
+
+
 		mViewModel.setupDB();
 
 		DataManager dm=new DataManager();
 
-		mViewModel.populateDB(dm.editSamplePantry(),dm.editSampleFood(),dm.editSampleCategory(),dm.editSampleFoodEntry(),dm.editSampleFoodCategory());
+//		mViewModel.populatePantry(dm.editSamplePantry());
+
+//		mViewModel.populateDB(dm.editSamplePantry(),dm.editSampleFood(),dm.editSampleCategory(),dm.editSampleFoodEntry(),dm.editSampleFoodCategory());
 
 		if(mAdapter.getItemCount()>3)
 		{
-			this.mBinding.imgVPantry.setVisibility(View.GONE);
+			Fragment currFrag= getParentFragmentManager().findFragmentByTag(this.getTag());
+
+			ImageView pantryicon=currFrag.getView().findViewById(R.id.imgV_pantryicon);
+			pantryicon.setVisibility(View.GONE);
+
+
+//			this.mBinding.imgVPantry.setVisibility(View.GONE);
 		}
 
 		mViewModel.getPantryList().observe(getViewLifecycleOwner(), new Observer<List<Pantry>>()

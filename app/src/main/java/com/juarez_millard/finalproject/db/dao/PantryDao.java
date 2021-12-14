@@ -20,6 +20,9 @@ public interface PantryDao
 	@Insert(onConflict= IGNORE)
 	 void insertNewPantry(Pantry pantry);
 
+	@Insert(onConflict = IGNORE)
+	void insertPantries(Pantry... pantries);
+
 	@Update(onConflict = IGNORE)
 	 void updatePantry(Pantry pantry);
 

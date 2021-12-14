@@ -14,8 +14,8 @@ public class Pantry
 	public int pID;
 	public String pName;
 	public String pRoom;
-	public int pCount;
-	public int pIcon;
+	public Integer pCount;
+	public Integer pIcon;
 
 /*	@Ignore
 	public Pantry()
@@ -49,12 +49,12 @@ public class Pantry
 		return this.pRoom;
 	}
 
-	public int getpCount()
+	public Integer getpCount()
 	{
 		return this.pCount;
 	}
 
-	public int getpIcon()
+	public Integer getpIcon()
 	{
 		return this.pIcon;
 	}
